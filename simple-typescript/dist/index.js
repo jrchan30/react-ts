@@ -160,3 +160,28 @@ const cart = new shopping_cart_1.ShoppingCart();
 console.log(`The cart's total is ${(0, calculate_total_amount_1.calculateTotalAmount)(cart)}`);
 const order = new order_1.Order();
 console.log(`The order's total is ${(0, calculate_total_amount_1.calculateTotalAmount)(order)}`);
+class Cat {
+    constructor(name) {
+        this.name = name;
+    }
+    setGroup(group) {
+        this.group = group;
+    }
+}
+class Dog {
+    constructor(name) {
+        this.name = name;
+    }
+    setGroup(group) {
+        this.group = group;
+    }
+    bark() { }
+}
+function initializeAnimal(Animal, name) {
+    const animal = new Animal(name);
+    animal.setGroup('mammals');
+    return animal;
+}
+const cat = initializeAnimal(Cat, 'Felix');
+const dog = initializeAnimal(Dog, 'Ava');
+dog.bark();
