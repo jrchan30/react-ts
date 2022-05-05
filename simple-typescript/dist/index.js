@@ -101,3 +101,55 @@ function calcArea(...args) {
     }
     return Math.pow(args[0], 2);
 }
+// Classes
+class Robot {
+    // Typescript automatically creates the properties
+    constructor(_name) {
+        this._name = _name;
+    }
+    static isColorAvailable(color) {
+        return Robot.availableColors.includes(color);
+    }
+    askName() {
+        console.log(`My name is ${this.name}`);
+    }
+    move(distance) {
+        console.log(`${this.name} moved ${distance} meters`);
+    }
+    set name(value) {
+        this._name = `PREFIX_${value}`;
+    }
+    get name() {
+        return `${this._name}_SUFFIX`;
+    }
+    set color(color) {
+        if (!Robot.isColorAvailable(color)) {
+            throw new Error(`Color ${color} is not available`);
+        }
+        this._color = color;
+    }
+}
+Robot.availableColors = ['green', 'yellow'];
+class FlyingRobot extends Robot {
+    constructor(name, jetpackSize) {
+        super(name);
+        this.jetpackSize = jetpackSize;
+    }
+    getSize() {
+        return this.jetpackSize;
+    }
+    move(distance) {
+        console.log(`${this.name} is flying`);
+        super.move(distance);
+        // this.jetpackSize = 1
+    }
+}
+const robot = new Robot('John');
+robot.askName();
+robot.move(20);
+const flyingRobot = new FlyingRobot('Jim', 2);
+flyingRobot.move(10);
+console.log(`Flying robot's jetpack size is ${flyingRobot.getSize()}`);
+flyingRobot.name = 'Kevin';
+console.log(`My name is ${flyingRobot.name}`);
+// Robot.availableColors;
