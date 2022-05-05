@@ -85,3 +85,19 @@ testA.y = 2;
 const sumTwoNum = (a, b) => a + b;
 sumTwoNum.prop1 = 'some prop';
 let child = { x: 'some prop', y: 'some prop y', z: 'some prop z' };
+// Functions (optional and default parameters)
+function sumAgain(a, b = 0) {
+    return a + b;
+}
+sumAgain(1);
+const sum2 = (a, b) => a + b;
+// Unknown number of arguments
+function sumEverything(arg1, arg2, ...numbers) {
+    return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+function calcArea(...args) {
+    if ((args.length = 2)) {
+        return args[0] * args[1];
+    }
+    return Math.pow(args[0], 2);
+}

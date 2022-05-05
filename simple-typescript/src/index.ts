@@ -131,3 +131,32 @@ interface Parent3 {
 }
 interface Child extends Parent, Parent2, Parent3 {}
 let child: Child = { x: 'some prop', y: 'some prop y', z: 'some prop z' };
+
+// Functions (optional and default parameters)
+function sumAgain(a: number, b: number = 0): number {
+  return a + b;
+}
+
+sumAgain(1);
+
+type MyFunc = (a: number, b: number) => number;
+const sum2: MyFunc = (a, b) => a + b;
+
+// Unknown number of arguments
+function sumEverything(
+  arg1: string,
+  arg2: boolean,
+  ...numbers: number[]
+): number {
+  return numbers.reduce((acc, curr) => acc + curr, 0);
+}
+
+// Overloads
+function calcArea(width: number, height: number): number;
+function calcArea(length: number): number;
+function calcArea(...args: number[]): number {
+  if ((args.length = 2)) {
+    return args[0] * args[1];
+  }
+  return Math.pow(args[0], 2);
+}
