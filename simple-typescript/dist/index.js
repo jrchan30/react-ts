@@ -73,12 +73,15 @@ let ANY;
 ANY = 'a string';
 ANY = 1;
 ANY = true;
-// Type Assertions
-const email = document.getElementById('email');
-if (email) {
-    email.addEventListener('change', (e) => {
-        // const input = e.currentTarget as HTMLInputElement;
-        const input = e.currentTarget;
-        console.log(input.value);
-    });
-}
+let test1 = { someProp: 1 };
+let test2 = test1;
+let profile = {
+    name: 'John',
+    // age: 30,
+};
+const testA = { someProp: 'some prop' };
+testA.x = 1;
+testA.y = 2;
+const sumTwoNum = (a, b) => a + b;
+sumTwoNum.prop1 = 'some prop';
+let child = { x: 'some prop', y: 'some prop y', z: 'some prop z' };

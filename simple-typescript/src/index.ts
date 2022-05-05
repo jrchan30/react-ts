@@ -68,12 +68,66 @@ ANY = 1;
 ANY = true;
 
 // Type Assertions
-const email = document.getElementById('email');
+// const email = document.getElementById('email');
 
-if (email) {
-  email.addEventListener('change', (e) => {
-    // const input = e.currentTarget as HTMLInputElement;
-    const input = <HTMLInputElement>e.currentTarget;
-    console.log(input.value);
-  });
+// if (email) {
+//   email.addEventListener('change', (e) => {
+//     // const input = e.currentTarget as HTMLInputElement;
+//     const input = <HTMLInputElement>e.currentTarget;
+//     console.log(input.value);
+//   });
+// }
+
+// Interfaces
+interface A {
+  someProp: number;
 }
+interface B {
+  someProp: number;
+  anotherProp: number;
+}
+
+let test1: A = { someProp: 1 };
+let test2: B = test1;
+
+interface Profile {
+  readonly name: string;
+  age?: number;
+}
+
+let profile: Profile = {
+  name: 'John',
+  // age: 30,
+};
+
+// Index Signature
+interface IS {
+  someProp: string;
+  [key: string]: number | string;
+}
+
+const testA: IS = { someProp: 'some prop' };
+testA.x = 1;
+testA.y = 2;
+
+// Call Signature
+interface Sum {
+  (a: number, b: number): number;
+  prop1: string;
+}
+
+const sumTwoNum: Sum = (a, b) => a + b;
+sumTwoNum.prop1 = 'some prop';
+
+// Extending Interfaces
+interface Parent {
+  x: string;
+}
+interface Parent2 {
+  y: string;
+}
+interface Parent3 {
+  z: string;
+}
+interface Child extends Parent, Parent2, Parent3 {}
+let child: Child = { x: 'some prop', y: 'some prop y', z: 'some prop z' };
